@@ -9,6 +9,9 @@ void setup() {
 }
 
 void loop() {
+  int myNumber = 12345;
+  char buff[60];             // Make sure it's large enough for your integer
+  itoa(myNumber, buff, 10);  // Convert int to string (base 10)
   u8g2.clearBuffer();                // Clear internal memory
   u8g2.setFont(u8g2_font_ncenB08_tr); // Choose a suitable font
   u8g2.drawStr(8, 24, "Hello U8g2!"); // Draw text (x, y, text)
@@ -16,8 +19,10 @@ void loop() {
   u8g2.drawStr(16, 48, "Hello U8g2!"); // Draw text (x, y, text)
   u8g2.drawStr(20, 64, "Hello U8g2!"); // Draw text (x, y, text)
   u8g2.setFont(u8g2_font_6x10_tf);
-  u8g2.drawStr(0, 12, "Top Line"); // Draw text (x, y, text)
-
+  sprintf(buff, "Top Line: %d", myNumber);
+  u8g2.drawStr(0, 12, buff);
+  //u8g2.drawStr(0, 12, "Top Line: "); // Draw text (x, y, text)
+  //u8g2.drawStr(24, 12, buff);        // Display the text
   u8g2.sendBuffer();                 // Transfer internal buffer to display
   delay(2000);
 }
