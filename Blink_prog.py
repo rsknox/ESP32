@@ -14,4 +14,7 @@ for i in range(10):
     led.value(0)
     led2.value(1)
     time.sleep(d2)
+    print("d1 = ", d1)
+    print("d2 = ", d2)
+    
 
