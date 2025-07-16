@@ -17,11 +17,13 @@ blue = PWM(Pin(BLUE_PIN), freq=FREQ)
 # Max PWM duty for ESP32
 MAX_DUTY = 1023
 
+
 def set_color(r, g, b):
     # Convert 0–255 to 0–1023 for PWM
     red.duty(int(r * 1023 / 255))
     green.duty(int(g * 1023 / 255))
     blue.duty(int(b * 1023 / 255))
+
 
 def loop():
     step = 5
@@ -49,6 +51,7 @@ def loop():
         b = 255 - r
         set_color(r, 0, b)
         sleep_ms(delay)
+
 
 # Main loop
 while True:
